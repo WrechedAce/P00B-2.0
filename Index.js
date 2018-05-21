@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const Bot = new Discord.Client();
 const ms = require("ms");
+const fs = require("fs");
 
 const token = "NDQ3ODE4MDgyNTIyNzU5MTgw.DeNGpQ.PB9nJw_bmpEidoXjwjXktunrEOY";
 
@@ -14,6 +15,17 @@ var prefix = "?"
 
 Bot.on("message", message => {
     var args = message.content.substring(prefix.length).split(" ");
+
+    const rl = readline.createInterface({
+        input: fs.createReadStream('sample.txt')
+      });
+      
+    rl.on('line', (line) => {
+        if (message.content.includes(line)) {
+            message.author.kick();
+        }
+    });
+
     if (message.content === "?P00B") {
         message.channel.send("P00B IS LOVE P00B IS LIFE");
     } else if (message.content === "?P00B.2") {
