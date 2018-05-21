@@ -17,7 +17,7 @@ Bot.on("message", message => {
     var args = message.content.substring(prefix.length).split(" ");
 
     const rl = readline.createInterface({
-        input: fs.createReadStream('sample.txt')
+        input: fs.createReadStream('badwords.txt')
       });
       
     rl.on('line', (line) => {
